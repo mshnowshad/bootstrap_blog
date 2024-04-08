@@ -22,5 +22,6 @@ def home(request):
 
 
 
-def post(request):
-    return render(request,'files/post.html')
+def post(request,pk):
+    post = Post.objects.get(id=pk)
+    return render(request,'files/post.html',{'post':post})

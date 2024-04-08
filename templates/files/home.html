@@ -51,7 +51,7 @@
         <div class="col-lg-8">
             <!-- Featured blog post-->
             <div class="card mb-4">
-                <a href="{% url 'post'%}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
                 <div class="card-body">
                     <div class="small text-muted">January 1, 2023</div>
                     <h2 class="card-title">Featured Post Title</h2>
@@ -69,13 +69,13 @@
                 <div class="col-md-6 mb-6" style="margin-bottom:.5rem;">
                     <!-- Adjust the column size as per your layout -->
                     <div class="card">
-                        <a href="#!">
+                        <a href="{% url 'post' i.id %}">
                             <div class="img-container">
                                 <img class="card-img-top" src="{{ i.image.url }}" alt="..." />
                             </div>
                         </a>
                         <div class="card-body">
-                            <div class="small text-muted">{{ i.upload_in }}</div>
+                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{i.category}}</a>
                             <h2 class="card-title h3" style="margin-bottom:.9rem;">{{ i.title | slice:':25' }}</h2>
                             <p class="card-text">{{ i.step_1 | slice:':70'}} .....</p>
                             <a class="btn btn-primary" href="#!">Read more →</a>
