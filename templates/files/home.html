@@ -2,6 +2,32 @@
 {%load static%}
 
 {%block title%}Code | Store{%endblock title%}
+
+{%block css%}
+<style>
+    .card-img-top{
+        max-width: 100%; /* Set maximum width to the container's width */
+        height: auto; /* Ensure the height adjusts automatically */
+    }
+
+    .img-container{
+        max-width: 700px; /* Set maximum width */
+        max-height: 350px; /* Set maximum height */
+        overflow: hidden; /* Hide the overflow to maintain aspect ratio */
+    }
+
+        .img-container img {
+            width: 100%; /* Ensure the image takes up the full width of its container */
+            height: auto; /* Ensure the height adjusts automatically */
+        }
+</style>
+
+
+
+{%endblock css%}
+
+
+
     {% block content%}
 
 
@@ -35,51 +61,34 @@
             </div>
             <!-- Nested row for non-featured blog posts-->
             <div class="row">
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+
+
+
+                <!-- ========================= There is start Loop ============================= -->
+                {% for i in posts %}
+                <div class="col-md-6 mb-6" style="margin-bottom:.5rem;">
+                    <!-- Adjust the column size as per your layout -->
+                    <div class="card">
+                        <a href="#!">
+                            <div class="img-container">
+                                <img class="card-img-top" src="{{ i.image.url }}" alt="..." />
+                            </div>
+                        </a>
                         <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
-                        </div>
-                    </div>
-                    <!-- Blog post-->
-                    <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
-                        <div class="card-body">
-                            <div class="small text-muted">January 1, 2023</div>
-                            <h2 class="card-title h4">Post Title</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
+                            <div class="small text-muted">{{ i.upload_in }}</div>
+                            <h2 class="card-title h3" style="margin-bottom:.9rem;">{{ i.title | slice:':25' }}</h2>
+                            <p class="card-text">{{ i.step_1 | slice:':70'}} .....</p>
                             <a class="btn btn-primary" href="#!">Read more →</a>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+
+                
+
             </div>
+
+
             <!-- Pagination-->
             <nav aria-label="Pagination">
                 <hr class="my-0" />
@@ -129,33 +138,15 @@
                     </div>
                 </div>
             </div>
+
             <!-- Side widget-->
+            {% for i in posts %}
             <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
+                <div class="card-header">{{i.title | slice:':50'}}..</div>
                 <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
             </div>
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-           
-            
+            {% endfor %}
+
         </div>
     </div>
 </div>
