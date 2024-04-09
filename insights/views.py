@@ -25,3 +25,5 @@ def home(request):
 def post(request,pk):
     post = Post.objects.get(id=pk)
     return render(request,'files/post.html',{'post':post})
+def login(request):
+    return render(request,'files/login.html')

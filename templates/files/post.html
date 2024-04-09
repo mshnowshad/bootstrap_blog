@@ -2,7 +2,16 @@
 {%load static%}
 
 
-    {% block content%}
+{% block css %}
+<style>
+    .image-container {
+        box-shadow: 0 4px 9px rgba(0, 0, 0, 0.9);
+        padding: 1px;
+    }
+</style>
+{% endblock css %}
+
+{% block content%}
 
 <div class="container mt-5">
     <div class="row">
@@ -21,26 +30,303 @@
 
 
                 <!-- Preview image figure-->
-                <figure><img class="img-fluid rounded" src="{{post.image.url}}" alt="Future Picture" /></figure>
-
+                <figure class="image-container"><img class="img-fluid rounded" src="{{post.image.url}}" alt="Future Picture" /></figure>
 
 
                 <!-- Post content-->
                 <section class="mb-5" align="justify">
-                    
-                    <h3 class=" mb-2" align="justify">Step : 1</h3>
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 1</h4>
 
-                    <p class="fs-5 mb-4" align="justify">{{post.step_1}}</p>
 
-                    <p class="fs-5 mb-4" style="background-color:antiquewhite;" align="justify">{{post.code_1}}</p>
-                    <p class="fs-5 mb-4" align="justify">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
+                    <p class="fs-5 mb-4" align="justify">{{post.step_1|linebreaksbr  }}</p>
 
-                    <!--  image -->
-                    <figure class=""><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
-                    <h4 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h4>
 
-                    <p class="fs-5 mb-4" align="justify" ">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-                    <p class="fs-5 mb-4" align="justify">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{ post.code_1 | linebreaksbr }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <!-- ================== there is step 2 ================-->
+                    {% if post.check_2 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 2</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_2 %}
+                    <figure class="image-container">
+                        <img class="img-fluid rounded" src="{{post.image_2.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+
+                    {% if post.step_2%}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_2| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_2 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{post.code_2 | linebreaksbr}}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+
+
+                    <!-- there is step 3 -->
+                    {% if post.check_3 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 3</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_3 %}
+                    <figure class="image-container">
+
+                        <img class="img-fluid rounded" src="{{post.image_3.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+
+                    {% if post.step_3%}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_3| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_3 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{post.code_3 | linebreaksbr}}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    {%endif%}
+
+
+
+
+                    <!-- there is step 4 -->
+                    {% if post.check_4 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 4</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_4 %}
+                    <figure class="image-container">
+
+                        <img class="img-fluid rounded" src="{{post.image_4.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.step_4%}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_4| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_4 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{post.code_4 | linebreaksbr}}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                    {% else %}
+                    {% endif %}
+
+
+
+
+                    <!-- there is step 5 -->
+                    {% if post.check_5 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 5</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_5 %}
+
+                    <figure class="image-container">
+                        <img class="img-fluid rounded" src="{{post.image_5.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+
+
+                    {% if post.step_5 %}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_5| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_5 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{ post.code_5 | linebreaksbr }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+
+
+
+
+
+
+                    <!-- there is step 6 -->
+                    {% if post.check_6 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 6</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_6 %}
+                    <figure class="image-container">
+
+                        <img class="img-fluid rounded" src="{{post.image_6.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.step_6%}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_6| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_6 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{ post.code_6 | linebreaksbr }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+
+
+
+
+
+
+                    <!-- there is step 7 -->
+                    {% if post.check_7 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 7</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_7 %}
+                    <figure class="image-container">
+
+                        <img class="img-fluid rounded" src="{{post.image_7.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+
+                    {% if post.step_7%}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_7| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_7 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{ post.code_7 | linebreaksbr }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+
+
+
+
+
+                    <!-- there is step 8 -->
+                    {% if post.check_8 %}
+                    <h4 class="fw-bolder mb-4 mt-5">Step : 8</h4>
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.image_8 %}
+                    <figure class="image-container">
+
+                        <img class="img-fluid rounded" src="{{post.image_8.url}}" alt="..." />
+                    </figure>
+
+                    {% else %}
+                    {% endif %}
+
+                    {% if post.step_8 %}
+                    <p class="fs-5 mb-4" align="justify">{{post.step_8| linebreaksbr}}</p>
+                    {% else %}
+                    {%endif%}
+
+                    {% if post.code_8 %}
+                    <div class="card">
+                        <div class="card-header">
+                            Code
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="fs-5 mb-4" align="justify">{{ post.code_8 | linebreaksbr }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+
+
+
+
+
+
                 </section>
             </article>
 
@@ -48,39 +334,41 @@
             <br />
             <br />
 
-            <!-- Comments section-->
-            <section class="mb-5">
-                <div class="card bg-light">
-                    <div class="card-body">
-                        <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-                        <!-- Comment with nested comments-->
-                        <div class="d-flex mb-4">
-                            <!-- Parent comment-->
-                            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                            <div class="ms-3">
-                                <div class="fw-bold">Commenter Name</div>
-                                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                                <!-- Child comment 1-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                                    </div>
-                                </div>
-                                <!-- Child comment 2-->
-                                <div class="d-flex mt-4">
-                                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                                    <div class="ms-3">
-                                        <div class="fw-bold">Commenter Name</div>
-                                        When you put money directly to a problem, it makes a good headline.
-                                    </div>
-                                </div>
-                            </div>
+
+
+            <!--=============================== there is Comments section ============================================-->
+            <!--<section class="mb-5">
+                        <div class="card bg-light">
+                            <div class="card-body">-->
+            <!-- Comment form-->
+            <!--<form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>-->
+            <!-- Comment with nested comments-->
+            <!--<div class="d-flex mb-4">-->
+            <!-- Parent comment-->
+            <!--<div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+            <div class="ms-3">
+                <div class="fw-bold">Commenter Name</div>
+                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.-->
+            <!-- Child comment 1-->
+            <!--<div class="d-flex mt-4">
+                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                <div class="ms-3">
+                    <div class="fw-bold">Commenter Name</div>
+                    And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                </div>
+            </div>-->
+            <!-- Child comment 2-->
+            <!--<div class="d-flex mt-4">
+                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                        <div class="ms-3">
+                            <div class="fw-bold">Commenter Name</div>
+                            When you put money directly to a problem, it makes a good headline.
                         </div>
-                        <!-- Single comment-->
-                        <div class="d-flex">
+                    </div>
+                </div>
+            </div>-->
+            <!-- Single comment-->
+            <!--<div class="d-flex">
                             <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                             <div class="ms-3">
                                 <div class="fw-bold">Commenter Name</div>
@@ -89,7 +377,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>-->
         </div>
 
 
@@ -107,56 +395,41 @@
             </div>
             <!-- Categories widget-->
             <div class="card mb-4">
-                <div class="card-header">Categories</div>
+                <div class="card-header">Source Code : </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <a href="{{post.source_code}}">
+                        {{post.source_code}}
+                    </a>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">Tags : </div>
+                <div class="card-body" align="justify">
+                    <p>
+                        {{post.tags | linebreaksbr}}
+                    </p>
                 </div>
             </div>
             <!-- Side widget-->
+            {% for i in posts %}
             <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
+                <a href="{% url 'post' i.id %}" style="text-decoration: none; color:darkslateblue;">
+                    <div class="card-header">{{i.title|slice:':50'}}..</div>
+                </a>
+                <div class="card-body">
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">
+                        {{i.category}}
+                    </a><br />
 
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+                    {{i.upload_in}}<br />
+                    {% if i.source_code_link %}
+                    {{i.source_code_link}}
+                    {% else %}
+                    {%endif%}
+                </div>
             </div>
+            {% endfor %}
 
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-header">Side Widget</div>
-                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-            </div>
         </div>
 
 

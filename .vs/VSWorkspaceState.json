@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\insights",
-    "\\setting",
     "\\templates",
     "\\templates\\files"
   ],
-  "SelectedNode": "\\templates\\navbar.html",
+  "SelectedNode": "\\insights\\views.py",
   "PreviewInSolutionExplorer": false
 }

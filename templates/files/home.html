@@ -76,9 +76,15 @@
                         </a>
                         <div class="card-body">
                             <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{i.category}}</a>
-                            <h2 class="card-title h3" style="margin-bottom:.9rem;">{{ i.title | slice:':25' }}</h2>
+                            <a href="{% url 'post' i.id %}" style="text-decoration: none; color: darkslateblue;">
+                                <h2 class="card-title h3" style="margin-bottom: .9rem;">{{ i.title | slice:':25' }}</h2>
+                            </a>
                             <p class="card-text">{{ i.step_1 | slice:':70'}} .....</p>
-                            <a class="btn btn-primary" href="#!">Read more →</a>
+                            <a class="btn btn-outline-primary" href="{% url 'post' i.id %}">
+                                Read more <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+                                    <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2m0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>

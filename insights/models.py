@@ -51,6 +51,7 @@ class Post(models.Model):
     check_9 = models.BooleanField(default=False)
     step_9 = models.TextField(default='', blank=True, null=True)
     code_9 = models.TextField(default='', blank=True, null=True)
+    tags = models.TextField(default='', blank=True, null=True)
     source_code = models.URLField(max_length=10000, blank=True, null=True) #<----এটি মানে হল ফিল্ডটি ফর্মে একটি মান প্রবেশ করার জন্য বাধ্যতা নেই। অর্থাৎ, ফিল্ডটি খালি অথবা মান না দিয়েও ফর্ম সাবমিট করা যাবে।
     upload_in = models.DateTimeField(auto_now_add=True)
     
