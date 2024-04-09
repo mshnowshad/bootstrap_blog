@@ -1,9 +1,27 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Category,Post
 from django.core.paginator import Paginator
+from django.contrib import messages
+from django.db.models import Q
 # Create your views here.
 
 
+def search(request):
+    if request.method == 'POST':  # Corrected the case of 'POST'
+        searched = request.POST.get('searched')  # Corrected retrieving data from request
+        prods = Post.objects.filter(
+            Q(title__icontains=searched) |
+            Q(tags__icontains=searched) |
+            Q(category__name__icontains=searched)
+        )
+        
+        if not prods:
+            messages.success(request, "Hmm, Your Searched Item Isn't in Our Blog. Keep Scrolling for More!")  # Corrected error message
+            return redirect('home')
+        else:
+            return render(request, 'files/search.html', {'searched': searched, 'prods': prods})
+    else:
+        return render(request, 'files/search.html')
 
 def home(request):
     posts = Post.objects.all()

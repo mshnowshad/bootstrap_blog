@@ -1,16 +1,16 @@
-{% extends 'link.html'%}
+﻿{% extends 'link.html'%}
 {%load static%}
 
 {%block title%}Code | Store{%endblock title%}
 
 {%block css%}
 <style>
-    .card-img-top{
+    .card-img-top {
         max-width: 100%; /* Set maximum width to the container's width */
         height: auto; /* Ensure the height adjusts automatically */
     }
 
-    .img-container{
+    .img-container {
         max-width: 700px; /* Set maximum width */
         max-height: 350px; /* Set maximum height */
         overflow: hidden; /* Hide the overflow to maintain aspect ratio */
@@ -37,7 +37,7 @@
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-center my-5">
-            <h1 class="fw-bolder">Unveiling the Code Chronicles, Your Gateway to Infinite Possibilities!</h1>
+            <h1 class="fw-bolder">Hunting for Treasures: " {{ searched }} "</h1>
             <p class="lead mb-0">You can put anything you want upload of post in CoDeStOrE</p>
         </div>
     </div>
@@ -65,7 +65,8 @@
 
 
                 <!-- ========================= There is start Loop ============================= -->
-                {% for i in posts %}
+                {% if prods %}
+                {% for i in prods %}
                 <div class="col-md-6 mb-6" style="margin-bottom:.5rem;">
                     <!-- Adjust the column size as per your layout -->
                     <div class="card">
@@ -89,8 +90,9 @@
                     </div>
                 </div>
                 {% endfor %}
+                {%endif%}
 
-                
+
 
             </div>
 
@@ -114,12 +116,11 @@
 
 
             <!-- Search widget-->
-          
+
             <div class="card mb-4">
                 <div class="card-header">Search</div>
                 <div class="card-body">
                     <form action="{% url 'search' %}" method="POST">
-                        {% csrf_token %}
                         <div class="input-group">
                             <input class="form-control" name="searched" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
                             <button class="btn btn-primary" type="submit">Go!</button>
