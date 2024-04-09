@@ -23,7 +23,7 @@
                     <!-- Post title-->
                     <h3 class="fw-bolder mb-1">{{post.title}}</h3>
                     <!-- Post meta content-->
-                    <div class="text-muted fst-italic mb-2">Posted on {{post.upload_in}}</div>
+                    <div class="text-muted fst-italic mb-2">Posted on {{post.upload_in|timesince }}</div>
                     <!-- Post categories-->
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{post.category}}</a>
                 </header>
@@ -41,14 +41,16 @@
                     <p class="fs-5 mb-4" align="justify">{{post.step_1|linebreaksbr  }}</p>
 
 
+
                     <div class="card">
                         <div class="card-header">
                             Code
                         </div>
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
+                        <div class="card-body"  style="background-color:dodgerblue;">
+                            <details>
+                                <summary>Show code : </summary><br />
                                 <p class="fs-5 mb-4" align="justify">{{ post.code_1 | linebreaksbr }}</p>
-                            </blockquote>
+                            </details>
                         </div>
                     </div>
 
@@ -387,10 +389,13 @@
             <div class="card mb-4">
                 <div class="card-header">Search</div>
                 <div class="card-body">
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
+                    <form action="{% url 'search' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input class="form-control" name="searched" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                            <button class="btn btn-primary" type="submit">Go!</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- Categories widget-->
@@ -402,6 +407,7 @@
                     </a>
                 </div>
             </div>
+            {% if post.tags %}
             <div class="card mb-4">
                 <div class="card-header">Tags : </div>
                 <div class="card-body" align="justify">
@@ -410,6 +416,8 @@
                     </p>
                 </div>
             </div>
+            {% else %}
+            {% endif%}
             <!-- Side widget-->
             {% for i in posts %}
             <div class="card mb-4">
